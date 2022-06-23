@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:catalog_app/widgets/drawer.dart';
 // ignore: use_key_in_widget_constructors
 class HomePage extends StatelessWidget {
 
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       ),
       // bottomSheet: BottomSheet(),
       // bottomNavigationBar: BottomNavigationBar(items: items),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
