@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:catalog_app/models/catalog.dart';
 import 'package:catalog_app/pages/home_details_page.dart';
-import 'package:catalog_app/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
+  const CatalogList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -26,9 +27,11 @@ class CatalogList extends StatelessWidget {
   }
 }
 
+
 class CatalogItem extends StatelessWidget {
   final Item catalog;
   const CatalogItem({Key? key, required this.catalog}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +40,17 @@ class CatalogItem extends StatelessWidget {
         children: [
           Hero(
             tag: Key(catalog.id.toString()),
-            child: CatalogImage(
-                image: catalog.image
-            ),
+            child: CatalogImage(image: catalog.image),
           ),
           Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  catalog.name.text.lg.color(MyTheme.blueish).bold.make(),
+                  catalog.name.text.lg
+                      .color(context.theme.colorScheme.secondary)
+                      .bold
+                      .make(),
                   catalog.desc.text.textStyle(context.captionStyle!).make(),
                   10.heightBox,
                   ButtonBar(
@@ -57,18 +61,20 @@ class CatalogItem extends StatelessWidget {
                       ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
-                            backgroundColor:
-                            MaterialStateProperty.all(MyTheme.blueish),
-                            shape: MaterialStateProperty.all(StadiumBorder()),
+                            backgroundColor: MaterialStateProperty.all(
+                                context.theme.iconTheme.color),
+                            shape: MaterialStateProperty.all(
+                              const StadiumBorder(),
+                            ),
                           ),
-                          child: "Buy".text.make())
+                          child: "Add".text.make())
                     ],
                   ).pOnly(right: 8.0)
                 ],
               ))
         ],
       ),
-    ).white.rounded.square(150).make().p16();
+    ).color(context.cardColor).rounded.square(150).make().p16();
   }
 }
 

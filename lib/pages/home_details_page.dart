@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:catalog_app/models/catalog.dart';
-import 'package:catalog_app/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
 
+
   const HomeDetailPage({Key? key, required this.catalog}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -25,11 +26,12 @@ class HomeDetailPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(MyTheme.blueish),
-                shape: MaterialStateProperty.all(StadiumBorder()),
+                backgroundColor:
+                MaterialStateProperty.all(context.theme.iconTheme.color),
+                shape: MaterialStateProperty.all(const StadiumBorder()),
               ),
-              child: "Buy".text.xl.make(),
-            ).wh(100, 50)
+              child: "Add to cart".text.make(),
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
@@ -47,12 +49,12 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
                       catalog.name.text.xl4
-                          .color(MyTheme.blueish)
+                          .color(context.accentColor)
                           .bold
                           .make(),
                       catalog.desc.text
@@ -76,4 +78,6 @@ class HomeDetailPage extends StatelessWidget {
     );
   }
 }
+
+
 
