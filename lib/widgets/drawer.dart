@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final imageUrl = "https://i.pinimg.com/280x280_RS/a9/f8/64/a9f86482bd58c8b6788c6f533c55c908.jpg";
+    final imageUrl = "https://avatars.githubusercontent.com/u/107374002?v=4";
 
     return Drawer(
       child: Container(
@@ -16,14 +16,9 @@ class MyDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                // decoration: BoxDecoration(
-                //   color: Colors.red,
-                // ),
                 accountName: Text("nishant_will"),
                 accountEmail: Text("aldifferento@gmail.com"),
-                // currentAccountPicture: Image.network(imageUrl),
                 currentAccountPicture: CircleAvatar(
-                  // backgroundImage: AssetImage(),
                   backgroundImage: NetworkImage(imageUrl),
                 ),
               ),

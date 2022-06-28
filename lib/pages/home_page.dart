@@ -1,13 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/cupertino.dart';
 import 'dart:convert';
+import 'package:catalog_app/models/catalogue.dart';
 import 'package:catalog_app/utils/routes.dart';
-import 'package:catalog_app/models/catalog.dart';
-import 'package:catalog_app/widgets/home_widgets/catalog_header.dart';
-import 'package:catalog_app/widgets/home_widgets/catalog_list.dart';
+import 'package:catalog_app/widgets/home_widgets/catalogue_header.dart';
+import 'package:catalog_app/widgets/home_widgets/catalogue_list.dart';
+import 'package:catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 
 // ignore: use_key_in_widget_constructors
 class HomePage extends StatefulWidget {
@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -24,12 +23,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    final catalogJson =
-    await rootBundle.loadString("assets/files/catalog.json");
-    final decodedData = jsonDecode(catalogJson);
+    await Future.delayed(Duration(seconds: 2));
+    final catalogueJson =
+        await rootBundle.loadString("assets/files/catalog.json");
+    final decodedData = jsonDecode(catalogueJson);
     var productsData = decodedData["products"];
-    CatalogModel.items = List.from(productsData)
+    CatalogueModel.items = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
         .toList();
     setState(() {});
@@ -42,8 +41,8 @@ class _HomePageState extends State<HomePage> {
         // backgroundColor: Theme.of(context).cardColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          backgroundColor: context.theme.iconTheme.color,
-          child: const Icon(
+          backgroundColor: context.theme.buttonColor,
+          child: Icon(
             CupertinoIcons.cart,
             color: Colors.white,
           ),
@@ -54,16 +53,15 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CatalogHeader(),
-                if (CatalogModel.items != null &&
-                    CatalogModel.items!.isNotEmpty)
-                  const CatalogList().py16().expand()
+                CatalogueHeader(),
+                if (CatalogueModel.items != null &&
+                    CatalogueModel.items!.isNotEmpty)
+                  CatalogueList().py16().expand()
                 else
-                  const CircularProgressIndicator().centered().expand(),
+                  CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),
         ));
   }
 }
-

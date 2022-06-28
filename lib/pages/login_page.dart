@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         changeButton = true;
       });
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
@@ -36,25 +36,25 @@ class _LoginPageState extends State<LoginPage> {
             key: _formKey,
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 30.0,
                 ),
                 Image.asset(
                   "assets/images/login_image.png",
                   fit: BoxFit.cover,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20.0,
                   // child: Text("lmao"),
                 ),
                 Text(
                   "Welcome $name",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20.0,
                 ),
                 Padding(
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Enter Username",
                           labelText: "username",
                         ),
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: true,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Enter password",
                           labelText: "password",
                         ),
@@ -93,32 +93,32 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 40.0,
                       ),
                       Material(
-                        color: context.theme.iconTheme.color,
+                        color: context.theme.buttonColor,
                         borderRadius:
-                        BorderRadius.circular(changeButton ? 50 : 8),
+                            BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
                           onTap: () => moveToHome(context),
                           child: AnimatedContainer(
-                            duration: const Duration(seconds: 1),
+                            duration: Duration(seconds: 1),
                             width: changeButton ? 50 : 150,
                             height: 50,
                             alignment: Alignment.center,
                             child: changeButton
-                                ? const Icon(
-                              Icons.done,
-                              color: Colors.white,
-                            )
-                                : const Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
+                                ? Icon(
+                                    Icons.done,
+                                    color: Colors.white,
+                                  )
+                                : Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
                           ),
                         ),
                       ),

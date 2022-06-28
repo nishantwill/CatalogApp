@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/models/catalogue.dart';
 
 class ItemWidget extends StatelessWidget {
   final Item item;
@@ -9,9 +9,6 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // color: Colors.grey,
-      // shadowColor: Color.fromRGBO(r, g, b, opacity),
-      // shape: StadiumBorder(),
       child: ListTile(
         onTap: () {
           print("${item.name} pressed");

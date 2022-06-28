@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/models/catalogue.dart';
+import 'package:catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
-  final Item catalog;
+  final Item catalogue;
 
-
-  const HomeDetailPage({Key? key, required this.catalog}) : super(key: key);
-
+  const HomeDetailPage({Key? key, required this.catalogue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +21,13 @@ class HomeDetailPage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.bold.xl4.make(),
+            "\$${catalogue.price}".text.bold.xl4.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
                 backgroundColor:
-                MaterialStateProperty.all(context.theme.iconTheme.color),
-                shape: MaterialStateProperty.all(const StadiumBorder()),
+                    MaterialStateProperty.all(context.theme.buttonColor),
+                shape: MaterialStateProperty.all(StadiumBorder()),
               ),
               child: "Add to cart".text.make(),
             ).wh(120, 50)
@@ -40,8 +39,8 @@ class HomeDetailPage extends StatelessWidget {
         child: Column(
           children: [
             Hero(
-              tag: Key(catalog.id.toString()),
-              child: Image.network(catalog.image),
+              tag: Key(catalogue.id.toString()),
+              child: Image.network(catalogue.image),
             ).h32(context),
             Expanded(
               child: VxArc(
@@ -53,11 +52,11 @@ class HomeDetailPage extends StatelessWidget {
                   width: context.screenWidth,
                   child: Column(
                     children: [
-                      catalog.name.text.xl4
+                      catalogue.name.text.xl4
                           .color(context.accentColor)
                           .bold
                           .make(),
-                      catalog.desc.text
+                      catalogue.desc.text
                           .textStyle(context.captionStyle!)
                           .xl
                           .make(),
@@ -78,6 +77,3 @@ class HomeDetailPage extends StatelessWidget {
     );
   }
 }
-
-
-
