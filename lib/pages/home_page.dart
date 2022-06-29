@@ -6,12 +6,12 @@ import 'package:catalog_app/models/catalogue.dart';
 import 'package:catalog_app/utils/routes.dart';
 import 'package:catalog_app/widgets/home_widgets/catalogue_header.dart';
 import 'package:catalog_app/widgets/home_widgets/catalogue_list.dart';
-import 'package:catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 // ignore: use_key_in_widget_constructors
 class HomePage extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final catalogueJson =
         await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogueJson);
@@ -41,8 +41,9 @@ class _HomePageState extends State<HomePage> {
         // backgroundColor: Theme.of(context).cardColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          // ignore: deprecated_member_use
           backgroundColor: context.theme.buttonColor,
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.cart,
             color: Colors.white,
           ),
@@ -53,12 +54,12 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CatalogueHeader(),
+                const CatalogueHeader(),
                 if (CatalogueModel.items != null &&
                     CatalogueModel.items!.isNotEmpty)
-                  CatalogueList().py16().expand()
+                  const CatalogueList().py16().expand()
                 else
-                  CircularProgressIndicator().centered().expand(),
+                  const CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),

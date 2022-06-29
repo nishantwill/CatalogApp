@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:catalog_app/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -19,7 +21,8 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         changeButton = true;
       });
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
+      // ignore: use_build_context_synchronously
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
@@ -36,25 +39,25 @@ class _LoginPageState extends State<LoginPage> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Image.asset(
                   "assets/images/login_image.png",
                   fit: BoxFit.cover,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                   // child: Text("lmao"),
                 ),
                 Text(
                   "Welcome $name",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Padding(
@@ -63,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Enter Username",
                           labelText: "username",
                         ),
@@ -80,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Enter password",
                           labelText: "password",
                         ),
@@ -93,26 +96,27 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
                       ),
                       Material(
+                        // ignore: deprecated_member_use
                         color: context.theme.buttonColor,
                         borderRadius:
                             BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
                           onTap: () => moveToHome(context),
                           child: AnimatedContainer(
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             width: changeButton ? 50 : 150,
                             height: 50,
                             alignment: Alignment.center,
                             child: changeButton
-                                ? Icon(
+                                ? const Icon(
                                     Icons.done,
                                     color: Colors.white,
                                   )
-                                : Text(
+                                : const Text(
                                     "Login",
                                     style: TextStyle(
                                         color: Colors.white,

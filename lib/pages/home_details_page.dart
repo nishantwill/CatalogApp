@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:catalog_app/models/catalogue.dart';
-import 'package:catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -26,8 +25,9 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                 backgroundColor:
+                    // ignore: deprecated_member_use
                     MaterialStateProperty.all(context.theme.buttonColor),
-                shape: MaterialStateProperty.all(StadiumBorder()),
+                shape: MaterialStateProperty.all(const StadiumBorder()),
               ),
               child: "Add to cart".text.make(),
             ).wh(120, 50)

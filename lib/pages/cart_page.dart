@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartPage extends StatelessWidget {
+  const CartPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class CartPage extends StatelessWidget {
       body: Column(
         children: [
           _CartList().p32().expand(),
-          Divider(),
+          const Divider(),
           _CartTotal(),
         ],
       ),
@@ -29,7 +31,7 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl5.color(context.theme.accentColor).make(),
+          "\$9999".text.xl5.color(context.theme.colorScheme.secondary).make(),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -41,6 +43,7 @@ class _CartTotal extends StatelessWidget {
             },
             style: ButtonStyle(
               backgroundColor:
+                  // ignore: deprecated_member_use
                   MaterialStateProperty.all(context.theme.buttonColor),
             ),
             child: "Buy".text.white.make(),
@@ -62,9 +65,9 @@ class __CartListState extends State<_CartList> {
     return ListView.builder(
       itemCount: 5,
       itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
+        leading: const Icon(Icons.done),
         trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
+          icon: const Icon(Icons.remove_circle_outline),
           onPressed: () {},
         ),
         title: "Item 1".text.make(),

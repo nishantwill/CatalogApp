@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_const_declarations
     final imageUrl = "https://avatars.githubusercontent.com/u/107374002?v=4";
 
     return Drawer(
@@ -16,14 +19,14 @@ class MyDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                accountName: Text("nishant_will"),
-                accountEmail: Text("aldifferento@gmail.com"),
+                accountName: const Text("nishant_will"),
+                accountEmail: const Text("aldifferento@gmail.com"),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(imageUrl),
                 ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 CupertinoIcons.home,
                 color: Colors.white,
@@ -36,7 +39,7 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
                 color: Colors.white,
@@ -49,7 +52,7 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
+            const ListTile(
               // onTap: ,
               leading: Icon(
                 CupertinoIcons.mail,
