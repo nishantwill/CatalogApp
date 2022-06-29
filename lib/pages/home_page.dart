@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +13,6 @@ import 'package:velocity_x/velocity_x.dart';
 // ignore: use_key_in_widget_constructors
 class HomePage extends StatefulWidget {
   @override
-  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -41,7 +42,6 @@ class _HomePageState extends State<HomePage> {
         // backgroundColor: Theme.of(context).cardColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          // ignore: deprecated_member_use
           backgroundColor: context.theme.buttonColor,
           child: const Icon(
             CupertinoIcons.cart,
@@ -54,10 +54,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CatalogueHeader(),
+                CatalogueHeader(),
                 if (CatalogueModel.items != null &&
                     CatalogueModel.items!.isNotEmpty)
-                  const CatalogueList().py16().expand()
+                  CatalogueList().py16().expand()
                 else
                   const CircularProgressIndicator().centered().expand(),
               ],

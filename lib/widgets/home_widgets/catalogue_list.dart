@@ -1,12 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'package:catalog_app/models/catalogue.dart';
 import 'package:catalog_app/pages/home_details_page.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'add_to_cart.dart';
 import 'catalogue_image.dart';
 
 class CatalogueList extends StatelessWidget {
-  const CatalogueList({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -48,7 +49,7 @@ class CatalogueItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               catalogue.name.text.lg
-                  .color(context.theme.colorScheme.secondary)
+                  .color(context.theme.accentColor)
                   .bold
                   .make(),
               catalogue.desc.text.textStyle(context.captionStyle!).make(),
@@ -58,17 +59,7 @@ class CatalogueItem extends StatelessWidget {
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalogue.price}".text.bold.xl.make(),
-                  ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            // ignore: deprecated_member_use
-                            context.theme.buttonColor),
-                        shape: MaterialStateProperty.all(
-                          const StadiumBorder(),
-                        ),
-                      ),
-                      child: "Add".text.make())
+                  AddToCart(catalogue: catalogue),
                 ],
               ).pOnly(right: 8.0)
             ],

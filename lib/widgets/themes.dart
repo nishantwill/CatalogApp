@@ -1,47 +1,40 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
+        primarySwatch: Colors.indigo,
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
+        buttonColor: blueish,
+        accentColor: blueish,
         appBarTheme: AppBarTheme(
           color: Colors.white,
           elevation: 0.0,
           iconTheme: const IconThemeData(color: Colors.black),
-          toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-          titleTextStyle: Theme.of(context).textTheme.headline6,
+          textTheme: Theme.of(context).textTheme,
         ),
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
-            .copyWith(secondary: blueish),
       );
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
         fontFamily: GoogleFonts.poppins().fontFamily,
         cardColor: Colors.black,
         canvasColor: darkCreamColor,
+        buttonColor: lightblueish,
+        accentColor: Colors.white,
         appBarTheme: AppBarTheme(
           // color: Colors.black,
           elevation: 0.0,
           iconTheme: const IconThemeData(color: Colors.white),
-          toolbarTextStyle: Theme.of(context)
-              .textTheme
-              .copyWith(
+          textTheme: Theme.of(context).textTheme.copyWith(
                 headline6:
                     context.textTheme.headline6?.copyWith(color: Colors.white),
-              )
-              .bodyText2,
-          titleTextStyle: Theme.of(context)
-              .textTheme
-              .copyWith(
-                headline6:
-                    context.textTheme.headline6?.copyWith(color: Colors.white),
-              )
-              .headline6,
+              ),
         ),
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
       );
 
   //colors

@@ -5,7 +5,6 @@ class CatalogueModel {
 
   //Get Item by ID
   Item getById(int id) =>
-      // ignore: null_closures
       items!.firstWhere((element) => element.id == id, orElse: null);
 
   //Get Item by Position
